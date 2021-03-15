@@ -132,7 +132,7 @@
       gdpr[t]=agreed;
     })
     hide();
-    events.change && events.change(cookieChoices);
+    events.change && events.change(chosen);
   }
 
   function choose () {
