@@ -78,12 +78,12 @@
 
   export function show () {
     shown = true;
-    events.showBanner();
+    events.showBanner && events.showBanner();
   }
 
   function hide(){
     shown=false;
-    events.hideBanner();
+    events.hideBanner && events.hideBanner();
   }
 
   onMount(() => {
@@ -132,7 +132,7 @@
       gdpr[t]=agreed;
     })
     hide();
-    events.change(cookieChoices);
+    events.change && events.change(cookieChoices);
   }
 
   function choose () {

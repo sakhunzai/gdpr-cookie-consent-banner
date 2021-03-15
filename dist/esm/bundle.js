@@ -1170,12 +1170,12 @@ function instance($$self, $$props, $$invalidate) {
 
 	function show() {
 		$$invalidate(9, shown = true);
-		events.showBanner();
+		events.showBanner && events.showBanner();
 	}
 
 	function hide() {
 		$$invalidate(9, shown = false);
-		events.hideBanner();
+		events.hideBanner && events.hideBanner();
 	}
 
 	onMount(() => {
@@ -1226,7 +1226,7 @@ function instance($$self, $$props, $$invalidate) {
 		});
 
 		hide();
-		events.change(cookieChoices);
+		events.change && events.change(cookieChoices);
 	}
 
 	function choose() {
