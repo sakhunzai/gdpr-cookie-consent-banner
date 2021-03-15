@@ -214,6 +214,23 @@ const options = {
     necessary: function() {
       console.log('No necessary cookies specified')
     }
+  },
+
+  /**
+   * 
+   * Trace ui state and user choice events
+   * 
+   **/
+  events:{
+    change:(gdpr)=>{
+      console.log("Change:",gdpr)
+    },
+    showBanner:()=>{
+      console.log("show banner");
+    },
+    hideBanner:()=>{
+      console.log("hide banner");
+    }
   }
 }
 GdprConsent.attachBanner(document.body, options)
