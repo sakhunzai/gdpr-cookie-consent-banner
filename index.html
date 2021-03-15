@@ -34,6 +34,17 @@
             value: true
           },
           analytics: false
+        },
+        events:{
+          change:(gdpr)=>{
+            console.log("Change:",gdpr)
+          },
+          showBanner:()=>{
+            console.log("show banner");
+          },
+          hideBanner:()=>{
+            console.log("hide banner");
+          }
         }
       })
     </script>

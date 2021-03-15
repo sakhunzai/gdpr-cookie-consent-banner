@@ -24,6 +24,12 @@
     necessary: function () {}
   }
 
+  export let events = {
+    hideBanner: function(){},
+    showBanner: function(){},
+    change: function(gdpr) {},
+  }
+
   export let cookieConfig = {}
 
   export let choices = {}
@@ -71,7 +77,13 @@
   export let closeLabel = 'Close settings'
 
   export function show () {
-    shown = true
+    shown = true;
+    events.showBanner();
+  }
+
+  function hide(){
+    shown=false;
+    events.hideBanner();
   }
 
   onMount(() => {
@@ -107,7 +119,7 @@
 
   function execute (chosen) {
     const types = Object.keys(cookieChoices)
-
+    let gdpr={};
     types.forEach(t => {
       const agreed = chosen[t]
       if (choicesMerged[t]) {
@@ -117,8 +129,10 @@
         categories[t] && categories[t]()
         dispatch(`${t}`)
       }
+      gdpr[t]=agreed;
     })
-    shown = false
+    hide();
+    events.change(cookieChoices);
   }
 
   function choose () {
